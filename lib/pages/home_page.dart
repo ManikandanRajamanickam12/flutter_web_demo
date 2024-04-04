@@ -11,6 +11,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        // TODO: Will be moved to seperately under menu option
         child: Column(
           children: [
             const TextTC(variant: TextVariant.body1, text: "Hello"),
