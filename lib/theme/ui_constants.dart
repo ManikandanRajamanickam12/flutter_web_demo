@@ -5,3 +5,5 @@ const double toolbarHeight = 64;
 const double appbarIconSize = 22;
 const double errorFontSize = 12;
 const double appbarLeadingIconSize = 24;
+const double drawerListTileAvatarRadius = 20;
+const double profileAvatarRadius = 35;

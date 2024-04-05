@@ -293,6 +293,7 @@ class ButtonText extends StatelessWidget {
 
     return TextButton(
       style: TextButton.styleFrom(
+        splashFactory: NoSplash.splashFactory,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Tokens.borderRadius),
         ),
@@ -412,7 +413,7 @@ Size getSizeValue({
 }) {
   switch (size) {
     case ButtonSize.small:
-      const buttonSize = 32.0;
+      const buttonSize = 24.0;
       return Size(
         buttonSize * 3 * textScaler,
         buttonSize * textScaler,
@@ -440,12 +441,12 @@ Size getSizeValue({
 EdgeInsets getButtonPadding(ButtonSize buttonSize) {
   switch (buttonSize) {
     case ButtonSize.small:
-      return EdgeInsets.symmetric(vertical: .8.sh, horizontal: 4.sw);
+      return EdgeInsets.symmetric(vertical: .4.sh, horizontal: .8.sw);
     case ButtonSize.medium:
-      return EdgeInsets.symmetric(vertical: 1.sh, horizontal: 4.sw);
+      return EdgeInsets.symmetric(vertical: .8.sh, horizontal: 2.sw);
     case ButtonSize.compact:
-      return EdgeInsets.symmetric(vertical: 1.sh, horizontal: 6.sw);
+      return EdgeInsets.symmetric(vertical: .8.sh, horizontal: 4.sw);
     default:
-      return EdgeInsets.symmetric(vertical: 1.sh, horizontal: 8.sw);
+      return EdgeInsets.symmetric(vertical: .8.sh, horizontal: 6.sw);
   }
 }
