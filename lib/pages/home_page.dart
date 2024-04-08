@@ -1,65 +1,77 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_web_demo/common/services/locator.dart';
-import 'package:flutter_web_demo/common/services/navigation_service.dart';
 import 'package:flutter_web_demo/components/desktop_navbar.dart';
 import 'package:flutter_web_demo/components/home_intro_details.dart';
 import 'package:flutter_web_demo/components/mobile_app_drawer.dart';
 import 'package:flutter_web_demo/components/mobile_nav_bar.dart';
-import 'package:flutter_web_demo/routing/route.dart';
+import 'package:flutter_web_demo/routing/app_route_constants.dart';
 import 'package:flutter_web_demo/theme/components/buttons.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class LayoutTemplate extends StatelessWidget {
-  const LayoutTemplate({super.key});
+// class LayoutTemplate extends StatelessWidget {
+//   const LayoutTemplate({super.key, required this.child});
+//   final Widget child;
 
-  @override
-  Widget build(BuildContext context) {
-    return ResponsiveBuilder(builder: (context, sizingInformation) {
-      return Scaffold(
-        drawer: sizingInformation.deviceScreenType == DeviceScreenType.mobile
-            ? const MobileAppDrawer()
-            : null,
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 2.sw, vertical: 2.sh),
-          child: Column(
-            children: [
-              const NavigationBar(),
-              Expanded(
-                  child: Navigator(
-                key: locator<NavigationService>().navigatorKey,
-                onGenerateRoute: generateRoute,
-                initialRoute: homeRoute,
-              ))
-            ],
-          ),
-        ),
-      );
-    });
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return ResponsiveBuilder(builder: (context, sizingInformation) {
+//       return Scaffold(
+//         drawer: sizingInformation.deviceScreenType == DeviceScreenType.mobile
+//             ? const MobileAppDrawer()
+//             : null,
+//         body: Padding(
+//           padding: EdgeInsets.symmetric(horizontal: 2.sw, vertical: 2.sh),
+//           child: Column(
+//             children: [const TopNavigationBar(), Expanded(child: child)],
+//           ),
+//         ),
+//       );
+//     });
+//   }
+// }
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout.builder(
-      mobile: (_) => const MobileHomeContent(),
-      tablet: (_) => const MobileHomeContent(),
-      desktop: (_) => const DesktopHomeContent(),
+    return Scaffold(
+      body: TopNavigationBar(
+        child: ScreenTypeLayout.builder(
+          mobile: (_) => const MobileHomeContent(),
+          tablet: (_) => const MobileHomeContent(),
+          desktop: (_) => const DesktopHomeContent(),
+        ),
+      ),
     );
   }
 }
 
-class NavigationBar extends StatelessWidget {
-  const NavigationBar({super.key});
+class TopNavigationBar extends StatelessWidget {
+  const TopNavigationBar({super.key, required this.child});
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return ScreenTypeLayout.builder(
-      mobile: (_) => const MobileNavBar(),
-      tablet: (_) => const MobileNavBar(),
-      desktop: (_) => const DesktopNavBar(),
+    return ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        return Scaffold(
+          drawer: sizingInformation.deviceScreenType == DeviceScreenType.mobile
+              ? const MobileAppDrawer()
+              : null,
+          body: Column(
+            children: [
+              ScreenTypeLayout.builder(
+                mobile: (_) => const MobileNavBar(),
+                tablet: (_) => const MobileNavBar(),
+                desktop: (_) => const DesktopNavBar(),
+              ),
+              Expanded(child: child)
+            ],
+          ),
+        );
+      },
     );
   }
 }
@@ -73,7 +85,12 @@ class DesktopHomeContent extends StatelessWidget {
       const HomeIntroDetails(),
       Center(
         child: Button(
-            variant: ButtonVariant.primary, onPressed: () {}, label: "EXPLORE"),
+            variant: ButtonVariant.primary,
+            onPressed: () {
+              context.goNamed(AppRouteConstants.optionOneRouteName,
+                  extra: {"message": "OptionOne message"});
+            },
+            label: "EXPLORE"),
       )
     ]);
   }

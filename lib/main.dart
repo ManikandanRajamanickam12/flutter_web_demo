@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_demo/common/services/locator.dart';
+import 'package:flutter_web_demo/common/services/navigation_service.dart';
 import 'package:flutter_web_demo/pages/home_page.dart';
+import 'package:flutter_web_demo/routing/app_route_config.dart';
+import 'package:flutter_web_demo/routing/route.dart';
 import 'package:flutter_web_demo/theme/app_theme.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -14,11 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveApp(builder: (context) {
-      return MaterialApp(
+      return MaterialApp.router(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Web Demo',
         theme: tcAppTheme,
-        home: const LayoutTemplate(),
+        routerConfig: AppRouter.returnRouter(true),
       );
     });
   }

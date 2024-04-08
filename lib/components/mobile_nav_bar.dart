@@ -22,9 +22,7 @@ class MobileNavBar extends StatelessWidget {
               },
               icon: const Icon(Icons.menu)),
           GestureDetector(
-              onTap: () {
-                locator<NavigationService>().navigateTo(homeRoute);
-              },
+              onTap: () {},
               child:
                   const TitleTC(variant: TitleVariant.subTitle1, text: "Logo")),
         ],

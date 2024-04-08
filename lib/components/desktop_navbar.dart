@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_web_demo/common/services/locator.dart';
 import 'package:flutter_web_demo/common/services/navigation_service.dart';
+import 'package:flutter_web_demo/routing/app_route_constants.dart';
 import 'package:flutter_web_demo/routing/route.dart';
 import 'package:flutter_web_demo/theme/components/buttons.dart';
 import 'package:flutter_web_demo/theme/components/title/title.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class DesktopNavBar extends StatelessWidget {
@@ -17,7 +19,7 @@ class DesktopNavBar extends StatelessWidget {
       children: [
         GestureDetector(
             onTap: () {
-              locator<NavigationService>().navigateTo(homeRoute);
+              context.goNamed(AppRouteConstants.homeRouteName);
             },
             child:
                 const TitleTC(variant: TitleVariant.subTitle1, text: "Logo")),
@@ -28,7 +30,8 @@ class DesktopNavBar extends StatelessWidget {
               variant: ButtonVariant.text,
               label: "Option-1",
               onPressed: () {
-                locator<NavigationService>().navigateTo(optionOne);
+                context.goNamed(AppRouteConstants.optionOneRouteName,
+                    extra: {"message": "option1 message"});
               },
             ),
             Padding(
@@ -37,7 +40,7 @@ class DesktopNavBar extends StatelessWidget {
                 variant: ButtonVariant.text,
                 label: "Option-2",
                 onPressed: () {
-                  locator<NavigationService>().navigateTo(optionTwo);
+                  context.goNamed(AppRouteConstants.optionTwoRouteName);
                 },
               ),
             ),
@@ -45,7 +48,7 @@ class DesktopNavBar extends StatelessWidget {
               variant: ButtonVariant.text,
               label: "Option-3",
               onPressed: () {
-                locator<NavigationService>().navigateTo(optionThree);
+                context.goNamed(AppRouteConstants.optionThreeRouteName);
               },
             ),
           ],
