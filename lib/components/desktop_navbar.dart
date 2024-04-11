@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_web_demo/common/services/locator.dart';
-import 'package:flutter_web_demo/common/services/navigation_service.dart';
-import 'package:flutter_web_demo/routing/app_route_constants.dart';
-import 'package:flutter_web_demo/routing/route.dart';
+import 'package:flutter_web_demo/router/app_router_constant.dart';
 import 'package:flutter_web_demo/theme/components/buttons.dart';
 import 'package:flutter_web_demo/theme/components/title/title.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +16,7 @@ class DesktopNavBar extends StatelessWidget {
       children: [
         GestureDetector(
             onTap: () {
-              context.goNamed(AppRouteConstants.homeRouteName);
+              context.goNamed(AppRouterConstant.homeRouteName);
             },
             child:
                 const TitleTC(variant: TitleVariant.subTitle1, text: "Logo")),
@@ -30,7 +27,7 @@ class DesktopNavBar extends StatelessWidget {
               variant: ButtonVariant.text,
               label: "Option-1",
               onPressed: () {
-                context.goNamed(AppRouteConstants.optionOneRouteName,
+                context.goNamed(AppRouterConstant.optionOneRouteName,
                     extra: {"message": "option1 message"});
               },
             ),
@@ -40,7 +37,7 @@ class DesktopNavBar extends StatelessWidget {
                 variant: ButtonVariant.text,
                 label: "Option-2",
                 onPressed: () {
-                  context.goNamed(AppRouteConstants.optionTwoRouteName);
+                  context.goNamed(AppRouterConstant.optionTwoRouteName);
                 },
               ),
             ),
@@ -48,7 +45,7 @@ class DesktopNavBar extends StatelessWidget {
               variant: ButtonVariant.text,
               label: "Option-3",
               onPressed: () {
-                context.goNamed(AppRouteConstants.optionThreeRouteName);
+                context.goNamed(AppRouterConstant.optionThreeRouteName);
               },
             ),
           ],

@@ -1,35 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_demo/components/desktop_navbar.dart';
 import 'package:flutter_web_demo/components/home_intro_details.dart';
 import 'package:flutter_web_demo/components/mobile_app_drawer.dart';
 import 'package:flutter_web_demo/components/mobile_nav_bar.dart';
-import 'package:flutter_web_demo/routing/app_route_constants.dart';
+import 'package:flutter_web_demo/router/app_router_constant.dart';
 import 'package:flutter_web_demo/theme/components/buttons.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-
-// class LayoutTemplate extends StatelessWidget {
-//   const LayoutTemplate({super.key, required this.child});
-//   final Widget child;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ResponsiveBuilder(builder: (context, sizingInformation) {
-//       return Scaffold(
-//         drawer: sizingInformation.deviceScreenType == DeviceScreenType.mobile
-//             ? const MobileAppDrawer()
-//             : null,
-//         body: Padding(
-//           padding: EdgeInsets.symmetric(horizontal: 2.sw, vertical: 2.sh),
-//           child: Column(
-//             children: [const TopNavigationBar(), Expanded(child: child)],
-//           ),
-//         ),
-//       );
-//     });
-//   }
-// }
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -87,7 +64,7 @@ class DesktopHomeContent extends StatelessWidget {
         child: Button(
             variant: ButtonVariant.primary,
             onPressed: () {
-              context.goNamed(AppRouteConstants.optionOneRouteName,
+              context.goNamed(AppRouterConstant.optionOneRouteName,
                   extra: {"message": "OptionOne message"});
             },
             label: "EXPLORE"),

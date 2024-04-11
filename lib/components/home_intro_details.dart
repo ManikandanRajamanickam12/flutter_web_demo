@@ -31,7 +31,7 @@ class HomeIntroDetails extends StatelessWidget {
                 variant: TextVariant.body1,
                 align: align,
                 text:
-                    "A Deme application which will go over the basics of using Flutter Web for website development.")
+                    "A Demo application which will go over the basics of using Flutter Web for website development.")
           ],
         ),
       );

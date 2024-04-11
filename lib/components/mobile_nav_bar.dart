@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_web_demo/common/services/locator.dart';
-import 'package:flutter_web_demo/common/services/navigation_service.dart';
-import 'package:flutter_web_demo/routing/route.dart';
 import 'package:flutter_web_demo/theme/components/title/title.dart';
 
 class MobileNavBar extends StatelessWidget {

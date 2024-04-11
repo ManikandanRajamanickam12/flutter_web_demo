@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_demo/common/widgets/user_nav_bar_profile.dart';
-import 'package:flutter_web_demo/routing/app_route_constants.dart';
+import 'package:flutter_web_demo/router/app_router_constant.dart';
 import 'package:flutter_web_demo/theme/components/buttons.dart';
 import 'package:flutter_web_demo/theme/components/text/text.dart';
 import 'package:flutter_web_demo/theme/ui_constants.dart';
@@ -29,7 +29,7 @@ class MobileAppDrawer extends StatelessWidget {
                         iconData: Icons.edit,
                         name: "Option-1",
                         onTap: () {
-                          context.goNamed(AppRouteConstants.optionOneRouteName,
+                          context.goNamed(AppRouterConstant.optionOneRouteName,
                               extra: {"message": "Hello"});
                         },
                       ),
@@ -37,7 +37,7 @@ class MobileAppDrawer extends StatelessWidget {
                         iconData: Icons.person,
                         name: "Option-2",
                         onTap: () {
-                          context.goNamed(AppRouteConstants.optionTwoRouteName);
+                          context.goNamed(AppRouterConstant.optionTwoRouteName);
                         },
                       ),
                       _DrawerListTile(
@@ -45,7 +45,7 @@ class MobileAppDrawer extends StatelessWidget {
                         name: "Option-3",
                         onTap: () {
                           context
-                              .goNamed(AppRouteConstants.optionThreeRouteName);
+                              .goNamed(AppRouterConstant.optionThreeRouteName);
                         },
                       ),
                     ],
